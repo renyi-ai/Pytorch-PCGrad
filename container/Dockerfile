@@ -17,7 +17,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/*
 
-RUN pip install tqdm dotmap matplotlib==3.5.0 opencv-python pandas numpy jupyter sklearn tensorboard pudb pyenchant openpyxl tabulate xlrd fpdf
+RUN pip install tqdm dotmap matplotlib==3.5.0 opencv-python pandas numpy  \
+    jupyter sklearn tensorboard pudb pyenchant openpyxl tabulate xlrd fpdf scipy
 
 ENV PYTHONPATH=/workspace
 WORKDIR /workspace

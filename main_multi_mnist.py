@@ -1,13 +1,10 @@
 import torch
-import torchvision
-import torch.nn as nn
 import torch.nn.functional as F
-import pdb
 import numpy as np
 from torchvision import transforms
 from data.multi_mnist import MultiMNIST
 from net.lenet import MultiLeNetR, MultiLeNetO
-from pcgrad import PCGrad
+from optimizers.pcgrad import PCGrad
 from utils import create_logger
 
 # ------------------ CHANGE THE CONFIGURATION -------------
@@ -68,7 +65,7 @@ for ep in range(NUM_EPOCHS):
         out_r, mask_r = nets['R'](rep, None)
 
         losses = [F.nll_loss(out_l, label_l), F.nll_loss(out_r, label_r)]
-        optimizer.pc_backward(losses)
+        optimizer.multi_loss_backward(losses)
         # sum(losses).backward()
         optimizer.step()
 

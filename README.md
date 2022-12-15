@@ -14,13 +14,13 @@ pip install -r requirements.txt
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from pcgrad import PCGrad
+from optimizers.pcgrad import PCGrad
 
 # wrap your favorite optimizer
-optimizer = PCGrad(optim.Adam(net.parameters())) 
-losses = [...] # a list of per-task losses
+optimizer = PCGrad(optim.Adam(net.parameters()))
+losses = [...]  # a list of per-task losses
 assert len(losses) == num_tasks
-optimizer.pc_backward(losses) # calculate the gradient can apply gradient modification
+optimizer.multi_loss_backward(losses)  # calculate the gradient can apply gradient modification
 optimizer.step()  # apply gradient step
 ```
 
