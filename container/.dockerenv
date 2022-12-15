@@ -1,0 +1,2 @@
+IMAGE_NAME=koszpe/pcgrad
+REPO_NAME=Pytorch-PCGrad  # This affect the folder structure created by docker_run.sh script
